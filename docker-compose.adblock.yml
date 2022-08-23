@@ -13,6 +13,7 @@ services:
       - "80:80/tcp"
     environment:
       TZ: 'America/Vancouver'
+      VIRTUAL_HOST: pihole.${VPN_DOMAIN}
       # WEBPASSWORD: 'set a secure password here or it will be random'
     # Volumes store your data between container upgrades
     volumes:
