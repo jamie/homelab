@@ -1,30 +1,24 @@
-version: "2"
+version: "3"
+
 services:
-  adguardhome:
-    image: adguard/adguardhome
-    container_name: adguardhome
+  pihole:
+    # More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+    container_name: pihole
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
     ports:
-      # Plain DNS
-      - 53:53/tcp
-      - 53:53/udp
-      # DHCP
-      # - 67:67/udp
-      # - 68:68/tcp
-      # - 68:68/udp
-      # Admin panel, HTTPS/DNS-over-HTTPS
-      - 80:80
-      - 3000:3000/tcp
-      - 443:443/tcp
-      - 443:443/udp
-      # DNS-over-TLS
-      # - 853:853/tcp
-      # DNS-over-QUIC
-      # - 784:784/udp
-      # - 853:853/udp
-      # - 8853:8853/udp
-      # DNSCrypt
-      # - 5443:5443/udp
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - "80:80/tcp"
+    environment:
+      TZ: 'America/Vancouver'
+      # WEBPASSWORD: 'set a secure password here or it will be random'
+    # Volumes store your data between container upgrades
     volumes:
-      - ${DOCKER_DATA}/adguardhome/work:/opt/adguardhome/work
-      - ${DOCKER_DATA}/adguardhome/conf:/opt/adguardhome/conf
+      - '${DOCKER_DATA}/pihole/etc-pihole:/etc/pihole'
+      - '${DOCKER_DATA}/pihole/etc-dnsmasq.d:/etc/dnsmasq.d'    
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    cap_add:
+      - NET_ADMIN # Recommended but not required (DHCP needs NET_ADMIN)      
     restart: unless-stopped
