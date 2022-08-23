@@ -9,10 +9,10 @@ TODO: Set up proper backups of application data/config. I don't trust docker vol
 
 The stacks are:
 - Homelab - general docker management, watchtower, frontends, reverse proxy
-- AdGuard - DNS Filtering for adblocking
-- CI Runners - I have a Rails app I use as a testbed for multiple CI/monitoring services, and some of those require self-hosted runners
-- Media Library - Plex server, and friends
-- Foundry VTT - I host our weekly D&D games
+- Adblock - DNS Filtering for adblocking
+- CI - I have a Rails app I use as a testbed for multiple CI/monitoring services, and some of those require self-hosted runners
+- Media - Plex server, and friends
+- Misc others for scoped applications
 
 ---
 
