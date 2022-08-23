@@ -8,9 +8,9 @@ services:
       - 53:53/tcp
       - 53:53/udp
       # DHCP
-      - 67:67/udp
-      - 68:68/tcp
-      - 68:68/udp
+      # - 67:67/udp
+      # - 68:68/tcp
+      # - 68:68/udp
       # Admin panel, HTTPS/DNS-over-HTTPS
       - 80:80
       - 3000:3000/tcp
