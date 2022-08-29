@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 services:
   pihole:
@@ -8,9 +8,15 @@ services:
     # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
     #network_mode: host
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - published: 53
+        target: 53
+        protocol: tcp
+        mode: host
+      - published: 53
+        target: 53
+        protocol: udp
+        mode: host
+      #- "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
       - "20080:80/tcp" # Admin
     environment:
       TZ: 'America/Vancouver'
