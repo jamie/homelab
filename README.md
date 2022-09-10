@@ -27,3 +27,5 @@ TODO/Notes:
   - Ombi or https://overseerr.dev/
   - https://github.com/HaveAGitGat/Tdarr with a worker on the mac would be nice
   - _possibly_ Heimdall as a universal frontend, with Organizr for the media center subtools? Would be useful to have links to foundry, komga, plex, ombi etc at toplevel for easier navigation, and leave organizr to manage swapping detailed media tools like sonarr/radarr/etc.
+
+See also https://github.com/meienberger/runtipi for a curated app list
